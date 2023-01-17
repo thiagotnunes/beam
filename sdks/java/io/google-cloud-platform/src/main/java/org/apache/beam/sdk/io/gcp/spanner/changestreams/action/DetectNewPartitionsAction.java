@@ -146,6 +146,7 @@ public class DetectNewPartitionsAction {
       OutputReceiver<PartitionMetadata> receiver,
       Timestamp minWatermark,
       TreeMap<Timestamp, List<PartitionMetadata>> batches) {
+    long scheduledPartitionsCount = 0;
     for (Map.Entry<Timestamp, List<PartitionMetadata>> batch : batches.entrySet()) {
       final Timestamp batchCreatedAt = batch.getKey();
       final List<PartitionMetadata> batchPartitions = batch.getValue();
@@ -155,8 +156,10 @@ public class DetectNewPartitionsAction {
         return ProcessContinuation.stop();
       }
       outputBatch(receiver, minWatermark, batchPartitions, scheduledAt);
+      scheduledPartitionsCount += batchPartitions.size();
     }
 
+    LOG.info("Scheduled {} partitions", scheduledPartitionsCount);
     return ProcessContinuation.resume().withResumeDelay(resumeDuration);
   }
 
@@ -178,7 +181,7 @@ public class DetectNewPartitionsAction {
       final PartitionMetadata updatedPartition =
           partition.toBuilder().setScheduledAt(scheduledAt).build();
 
-      LOG.info(
+      LOG.debug(
           "[{}] Scheduled partition at {} with start time {} and end time {}",
           updatedPartition.getPartitionToken(),
           updatedPartition.getScheduledAt(),
