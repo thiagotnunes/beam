@@ -158,7 +158,12 @@ public class DetectNewPartitionsDoFn extends DoFn<PartitionMetadata, PartitionMe
       OutputReceiver<PartitionMetadata> receiver,
       ManualWatermarkEstimator<Instant> watermarkEstimator) {
 
-    return detectNewPartitionsAction.run(tracker, receiver, watermarkEstimator);
+    final long start = System.nanoTime();
+    final ProcessContinuation continuation = detectNewPartitionsAction.run(tracker, receiver,
+        watermarkEstimator);
+    final long end = System.nanoTime();
+    LOG.info("Partition scheduling took {}ns", (end - start));
+    return continuation;
   }
 
   /**
