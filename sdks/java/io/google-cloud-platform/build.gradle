@@ -23,9 +23,9 @@ plugins {
   id 'com.google.protobuf'
 }
 
+// FIXME: Check if we can remove this.
 repositories {
   mavenCentral()
-  mavenLocal()
 }
 
 applyJavaNature(
@@ -153,9 +153,6 @@ dependencies {
   implementation 'com.google.http-client:google-http-client-gson:1.41.2'
   implementation "org.threeten:threetenbp:1.4.4"
 
-  implementation 'com.google.protobuf:protobuf-java:4.31.0'
-  implementation 'com.google.protobuf:protobuf-java-util:4.31.0'
-
   testImplementation library.java.arrow_memory_netty
   testImplementation project(path: ":sdks:java:core", configuration: "shadowTest")
   testImplementation project(path: ":sdks:java:extensions:avro", configuration: "testRuntimeMigration")
@@ -180,7 +177,9 @@ dependencies {
 
 protobuf {
   protoc {
-    artifact = "com.google.protobuf:protoc:4.31.0"
+    // TODO: update the version to come from the variable ${protobuf_version} from 
+    // https://github.com/apache/beam/blob/bbf7124fd5b1149a5610f3b255f232eb249e2960/buildSrc/src/main/groovy/org/apache/beam/gradle/BeamModulePlugin.groovy#L642
+    artifact = "com.google.protobuf:protoc:4.29.4"
   }
 }
 
