@@ -20,9 +20,7 @@
 // directory.
 module github.com/apache/beam/sdks/v2
 
-go 1.23.0
-
-toolchain go1.24.1
+go 1.25.0
 
 require (
 	cloud.google.com/go/bigquery v1.67.0
@@ -55,11 +53,11 @@ require (
 	github.com/xitongsys/parquet-go v1.6.2
 	github.com/xitongsys/parquet-go-source v0.0.0-20241021075129-b732d2ac9c9b
 	go.mongodb.org/mongo-driver v1.17.3
-	golang.org/x/net v0.40.0
+	golang.org/x/net v0.57.0
 	golang.org/x/oauth2 v0.30.0
-	golang.org/x/sync v0.14.0
-	golang.org/x/sys v0.33.0
-	golang.org/x/text v0.25.0
+	golang.org/x/sync v0.22.0
+	golang.org/x/sys v0.47.0
+	golang.org/x/text v0.41.0
 	google.golang.org/api v0.232.0
 	google.golang.org/genproto v0.0.0-20250407143221-ac9807e6c755
 	google.golang.org/grpc v1.72.0
@@ -129,6 +127,7 @@ require (
 	go.opentelemetry.io/otel/sdk/metric v1.35.0 // indirect
 	go.opentelemetry.io/otel/trace v1.35.0 // indirect
 	go.shabbyrobe.org/gocovmerge v0.0.0-20230507111327-fa4f82cfbf4d // indirect
+	golang.org/x/telemetry v0.0.0-20260708182218-49f421fb7959 // indirect
 	golang.org/x/time v0.11.0 // indirect
 )
 
@@ -198,9 +197,9 @@ require (
 	github.com/youmark/pkcs8 v0.0.0-20240726163527-a2c0da244d78 // indirect
 	github.com/zeebo/xxh3 v1.0.2 // indirect
 	go.opencensus.io v0.24.0 // indirect
-	golang.org/x/crypto v0.38.0 // indirect
-	golang.org/x/mod v0.23.0 // indirect
-	golang.org/x/tools v0.30.0 // indirect
+	golang.org/x/crypto v0.54.0 // indirect
+	golang.org/x/mod v0.38.0 // indirect
+	golang.org/x/tools v0.48.0 // indirect
 	golang.org/x/xerrors v0.0.0-20240903120638-7835f813f4da // indirect
 	google.golang.org/genproto/googleapis/api v0.0.0-20250414145226-207652e42e2e // indirect
 	google.golang.org/genproto/googleapis/rpc v0.0.0-20250428153025-10db94c68c34 // indirect
